@@ -1,5 +1,5 @@
 import fs from 'fs';
-//NO ANDA!
+// https://tutorialedge.net/nodejs/reading-writing-files-with-nodejs/
 
 let pathito = './TP04/text.txt';
 
