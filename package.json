@@ -1,5 +1,9 @@
 {
   "dependencies": {
     "iso-country-currency": "^0.6.0"
+  },
+  "scripts": {
+    "start": "node .\\src\\modules\\index01.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
