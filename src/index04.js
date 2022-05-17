@@ -1,33 +1,23 @@
 import fs from 'fs';
-// https://tutorialedge.net/nodejs/reading-writing-files-with-nodejs/
+// https://www.geeksforgeeks.org/node-js-fs-opensync-method/
 
-let pathito = './TP04/text.txt';
-
-console.log("antes");
-fs.readFile(path, (err, data) => {
-    if (err) {
-        throw err;
+function CopyFile(input, out) {
+    let data;
+    try {
+        data = fs.readFileSync(input);
+    } 
+    catch(error) {
+        return error;
     }
-    console.log(data.toString());
-    // si usamos readFile, por default es async.
-    // pero es un async raro. Pensar esto como un then..
-});
-console.log('durante');
-// .then(() => console.log("despues"));
+    
+    try {
+        const fd = fs.openSync(out, "w", 0o666);
+        fs.writeFileSync(fd, data);
+        return "SUCCESS"
+    } 
+    catch (error) {
+        return error;
+    }
+}
 
-
-// No termino de entender como funciona el readFileSync:
-
-// function ReadEsta(path){
-//     fs.readFileSync(path, (err, data)=>{
-//         if (err) {
-//             throw err;
-//         }
-//         else{
-//             return data.toString();
-//         }
-//     });    
-// }
-
-// console.log(ReadEsta(pathito));
-
+console.log(CopyFile("./hola.txt", "./out.txt"));
